@@ -1,4 +1,4 @@
-# Motif
+# motifs
 
 A small python script to locate motifs in nucleotide sequences. The underlying idea was to identify binding sites that comprise only a few nucleotides in target sequences, such as those required for miRNA or primer binding sites. Of course, it can also be used as a general tool to identify partial regions in nucleotide sequences. The only requirement is a 100 % match of the sequences, the identification of degenerated sequences is not yet supported.
 

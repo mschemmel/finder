@@ -3,7 +3,10 @@ import os
 import sys
 import argparse
 import datetime
+import re
 from tqdm import tqdm
+
+
 
 def import_sequences(filepath):
     sequences = {}
@@ -21,20 +24,52 @@ def import_sequences(filepath):
                 sequences[header] += line.strip().upper()
     return sequences
 
+
+def is_degenerated(to_check):
+    if any(x not in ["A","T","G","C"] for x in to_check):
+            return True
+
+def degenerated_of(deg): 
+    transform = deg
+    
+    # https://www.bioinformatics.org/sms/iupac.html
+    dg = {"R": "AG",
+          "Y": "CT",
+          "S": "GC",
+          "W": "AT",
+          "K": "GT",
+          "M": "AC",
+          "B": "CGT",
+          "D": "AGT",
+          "H": "ACT",
+          "V": "ACG",
+          "N": "ATGC"}
+    
+    # detect all non nucleotides in sequence
+    non_nucleotides = list(filter(lambda a :  True if a in list(dg.keys()) else False, transform))
+                                           
+    # replace them with possible nucleotides as regex notation
+    for flse in non_nucleotides:
+        transform = transform.replace(flse,"[{}]".format(dg[flse]))
+    
+    return transform
+
 def findall(base, pattern):
     binding_sites_per_target = {}
+    
     # loop through all targets
     for id_target, seq_target in tqdm(base.items()):
         binding_sites = {}
+
         for id_query, seq_query in pattern.items():
-            matches = []
-
-            # find all binding sites and append to 'matches'
-            hit = seq_target.find(seq_query)
-            while hit != -1:
-                matches.append(hit)
-                hit = seq_target.find(seq_query, hit + 1)
-
+            # find all binding sites
+            # first check if query sequence is degenerated
+            if is_degenerated(seq_query):
+                seq_query_deg = degenerated_of(seq_query)
+                matches = [i.start() for i in re.finditer(seq_query_deg, seq_target)]
+            else:
+                matches = [i.start() for i in re.finditer(seq_query, seq_target)]
+              
             if matches:
                 binding_sites[seq_query] = matches
                 binding_sites_per_target[id_target] = binding_sites

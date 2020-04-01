@@ -1,18 +1,18 @@
 # motifs
 
-A small python script to locate motifs in nucleotide sequences. The underlying idea was to identify binding sites that comprise only a few nucleotides in target sequences, such as those required for miRNA or primer binding sites. Of course, it can also be used as a general tool to identify partial regions in nucleotide sequences. The only requirement is a 100 % match of the sequences, the identification of degenerated sequences is not yet supported.
+A small python script to locate motifs in nucleotide sequences. The underlying idea was to identify binding sites that comprise only a few nucleotides in target sequences, such as those required for miRNA or primer binding sites. Of course, it can also be used as a general tool to identify partial regions in nucleotide sequences. The identification of degenerated sequences as query is also supported.
 
 ## Getting Started
 It is written in python3.
 
 ## Prerequisites
 It uses the package ['tqdm'](https://github.com/tqdm/tqdm) to track progress. If it is not already installed, you can easily do this with:
-```{bash}
+```
 pip3 install tqdm 
 ```
 
 ## Usage
-```{python}
+```
 python3 motifs.py -t template.fa -q query.fa -o /your/output/path -p myproject
 ```
 ### Arguments:
@@ -25,10 +25,10 @@ python3 motifs.py -t template.fa -q query.fa -o /your/output/path -p myproject
 If the output path (-o) is not specified, the current working directory is used. All other arguments are required.
 ## Test
 
-The 'data' folder contains two files (template.fa; query.fa) with arbitrarily generated nucleotide sequences for testing purposes. Try them out using:
+The 'data' folder contains several files with arbitrarily generated nucleotide sequences (non-degenerated & degenerated) for testing purposes. Try them out using:
 
-```{python}
-python3 motifs.py -t ./data/template.fa -q ./data/query.fa -p testrun
+```
+python3 motifs.py -t ./data/template1000.fa -q ./data/query100.fa -p testrun
 ```
 ## Output
 The output is structured into two files:

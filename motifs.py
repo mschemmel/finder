@@ -61,9 +61,12 @@ def findall(base, pattern):
     for id_target, seq_target in tqdm(base.items()):
         binding_sites = {}
 
-        for id_query, seq_query in pattern.items():
-            # find all binding sites
-            # first check if query sequence is degenerated
+        for id_query, seq_query in pattern.items(): 
+            # check if query sequence is longer than target
+            if len(seq_query) > len(seq_target):
+                continue
+            
+            # check if query sequence is degenerated
             if is_degenerated(seq_query):
                 seq_query_deg = degenerated_of(seq_query)
                 matches = [i.start() for i in re.finditer(seq_query_deg, seq_target)]

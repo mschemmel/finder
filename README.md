@@ -1,3 +1,5 @@
+![GitHub](https://img.shields.io/github/license/mschemmel/motifs)
+
 # motifs
 
 A python script to locate motifs in nucleotide sequences. The underlying idea was to identify binding sites that comprise only a few nucleotides in target sequences, such as those required for miRNA or primer binding sites. Of course, it can also be used as a general tool to identify partial regions in nucleotide sequences. The identification of degenerated sequences as query is also supported.

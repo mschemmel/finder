@@ -1,5 +1,5 @@
 ![GitHub](https://img.shields.io/github/license/mschemmel/motifs)
-<img src="https://img.shields.io/badge/python-3.4%2C3.5%2C3.6%2C3.7%2C3.8-9cf.svg?style=flat">
+<img src="https://img.shields.io/badge/python-3.4-3.8-9cf.svg?style=flat">
 [![Build Status](https://travis-ci.org/mschemmel/motifs.svg?branch=master)](https://travis-ci.org/mschemmel/motifs)
 
 

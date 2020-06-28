@@ -1,9 +1,12 @@
+dist: focal
 language: python
 python:
   - "3.7"
   - "3.6"
   - "3.5"
 install:
-  - pip3 install -r requirements.txt
+  - pip install -r requirements.txt
 script:
   - python3 motifs.py -t ./data/template1000.fa -q ./data/query100.fa -p testrun
+notifications:
+  email: false

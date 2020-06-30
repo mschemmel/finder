@@ -42,4 +42,6 @@ The output is structured into two files:
     * contains a simple text based visualization of template sequences with at least one hit
  * summary.txt:
     * contains a tabular conclusion of all template sequences with at least on hit and their location
+
+
 ![Illustrate](/images/illustrate.png)

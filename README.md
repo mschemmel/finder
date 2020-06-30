@@ -2,14 +2,13 @@
 <img src="https://img.shields.io/badge/python-3.4--3.8-9cf.svg?style=flat">
 [![Build Status](https://travis-ci.org/mschemmel/motifs.svg?branch=master)](https://travis-ci.org/mschemmel/motifs)
 
+# motifs
+
+A python script to locate motifs in nucleotide sequences. The underlying idea was to identify binding sites that comprise only a few nucleotides in target sequences, such as those required for miRNA or primer binding sites. Of course, it can also be used as a general tool to identify partial regions in nucleotide sequences. The identification of degenerated sequences as query is also supported. Queries that are longer than the target will not be considered.
 
 <p align="center">
 <img src="/images/illustrate_mapping.png">
 </p>
-
-# motifs
-
-A python script to locate motifs in nucleotide sequences. The underlying idea was to identify binding sites that comprise only a few nucleotides in target sequences, such as those required for miRNA or primer binding sites. Of course, it can also be used as a general tool to identify partial regions in nucleotide sequences. The identification of degenerated sequences as query is also supported. Queries that are longer than the target will not be considered.
 
 ## Getting Started
 It is written in python3.
@@ -46,6 +45,3 @@ The output is structured into two files:
     * contains a simple text based visualization of template sequences with at least one hit
  * summary.txt:
     * contains a tabular conclusion of all template sequences with at least on hit and their location
-
-
-![Illustrate](/images/illustrate_mapping.png)

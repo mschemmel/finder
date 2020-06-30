@@ -44,4 +44,4 @@ The output is structured into two files:
     * contains a tabular conclusion of all template sequences with at least on hit and their location
 
 
-![Illustrate](/images/illustrate.png)
+![Illustrate](/images/illustrate_mapping.png)

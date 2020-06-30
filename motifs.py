@@ -74,7 +74,7 @@ def findall(base, pattern):
                 matches = [i.start() for i in re.finditer(seq_query, seq_target)]
               
             if matches:
-                binding_sites[seq_query] = matches
+                binding_sites[seq_query + ":" + id_query] = matches
                 binding_sites_per_target[id_target] = binding_sites
 
     return binding_sites_per_target

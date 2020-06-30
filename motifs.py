@@ -61,7 +61,8 @@ def findall(base, pattern):
     for id_target, seq_target in tqdm(base.items()):
         binding_sites = {}
 
-        for id_query, seq_query in pattern.items(): 
+        for id_query, seq_query in pattern.items():
+
             # check if query sequence is longer than target
             if len(seq_query) > len(seq_target):
                 continue
@@ -74,7 +75,14 @@ def findall(base, pattern):
                 matches = [i.start() for i in re.finditer(seq_query, seq_target)]
               
             if matches:
-                binding_sites[seq_query + ":" + id_query] = matches
+                # merge id and seq of query in 'hit' variable
+                # for later use in 'illustrate' function
+                hits = "{}_{}".format(id_query,seq_query)
+
+                # populate bindin_sites
+                binding_sites[hits] = matches
+                
+                #store all binding_sites
                 binding_sites_per_target[id_target] = binding_sites
 
     return binding_sites_per_target
@@ -82,9 +90,11 @@ def findall(base, pattern):
 def illustrate(template, summary):
     for target, binding_sites in summary.items():
         yield ">{}:{}\n{}".format(target, str(len(template[target])), template[target])
-        for query_seq, sites in binding_sites.items():
+        for query, sites in binding_sites.items():
+            id_ = query.split("_")[0]
+            sequence = query.split("_")[1]
             for site in sites:
-                yield " " * site + query_seq + ":" + "(" + str(len(query_seq)) + ")" + ":" + str(site) + ":" + str(site + len(query_seq))
+                yield " " * site + sequence + ":" + id_ + ":" + "(" + str(len(sequence)) + ")" + ":" + str(site) + ":" + str(site + len(sequence))
 
 def now():
     return str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))

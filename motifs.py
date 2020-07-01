@@ -105,11 +105,13 @@ def save_mapping(templ, align, filepath):
 
 def save_report(template, align, filepath):
     with open(filepath, "a") as fle:
-        fle.write("{}\t{}\t{}\t{}\t{}\t{}\n".format("target", "target_length", "query", "query_length", "start", "stop"))
+        fle.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format("target", "target_length", "query","query_seq", "query_length", "start", "stop"))
         for k, v in align.items():
             for a, b in v.items():
+                id_ = a.split("_")[0]
+                sequence = a.split("_")[1]
                 for item in b:
-                    fle.write("\t".join(map(str, [k, len(template[k]), a, len(a), int(item), int(item) + len(a)])) + "\n")
+                    fle.write("\t".join(map(str, [k, len(template[k]), id_, sequence, len(sequence), int(item), int(item) + len(sequence)])) + "\n")
 
 def main():
     # handle command line options

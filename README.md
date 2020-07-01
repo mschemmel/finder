@@ -45,3 +45,6 @@ The output is structured into two files:
     * contains a simple text based visualization of template sequences with at least one hit
  * summary.txt:
     * contains a tabular conclusion of all template sequences with at least on hit and their location
+
+## Feedback
+If you have any feedback or comments, please send me a mail or open on issue on github.

@@ -125,7 +125,7 @@ def main():
     # check if all necessary filepaths are provided
     # check targets and query
     if args.targets:
-        if args.queries:
+        if args.query:
             pass
         else:
             print("Please provide a valid path for your query file.")
@@ -168,7 +168,7 @@ def main():
     # import fasta files
     print("{}\t{}".format(now(), "Import target and query file"))
     target = import_sequences(args.targets)
-    query = import_sequences(args.queries)
+    query = import_sequences(args.query)
     print("-" * 30)
     print("{} target sequences".format(len(target)))
     print("{} query sequences".format(len(query)))

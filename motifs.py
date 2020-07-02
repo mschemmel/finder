@@ -117,7 +117,7 @@ def main():
     # handle command line options
     parser = argparse.ArgumentParser(description="Program to find all occurences of queries in template sequences.")
     parser.add_argument("-t", "--targets", help="Path to your target fasta file")
-    parser.add_argument("-q", "--queries", help="Path to your query fasta file")
+    parser.add_argument("-q", "--query", help="Path to your query fasta file")
     parser.add_argument("-o", "--output", help="Path to your output directory")
     parser.add_argument("-p", "--project", help="Project ID")
     args = parser.parse_args()

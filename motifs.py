@@ -27,7 +27,9 @@ def import_sequences(filepath):
 
 def is_degenerated(to_check):
     if any(x not in ["A","T","G","C"] for x in to_check):
-            return True
+        return True
+    else:
+        return False
 
 def degenerated_of(deg): 
     transform = deg

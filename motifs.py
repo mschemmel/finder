@@ -77,7 +77,7 @@ def findall(base, pattern):
                 matches = [i.start() for i in re.finditer(seq_query, seq_target)]
               
             if matches:
-                # merge id and seq of query in 'hit' variable
+                # merge id and seq of query in 'hits' variable
                 # for later use in 'illustrate' function
                 hits = "{}_{}".format(id_query,seq_query)
 

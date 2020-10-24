@@ -81,7 +81,7 @@ def findall(base, pattern):
                 # for later use in 'illustrate' function
                 hits = "{}_{}".format(id_query,seq_query)
 
-                # populate bindin_sites
+                # populate binding_sites
                 binding_sites[hits] = matches
                 
                 #store all binding_sites

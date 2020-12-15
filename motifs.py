@@ -6,8 +6,6 @@ import datetime
 import re
 from tqdm import tqdm
 
-
-
 def import_sequences(filepath):
     sequences = {}
     header = ""
@@ -23,7 +21,6 @@ def import_sequences(filepath):
             else:
                 sequences[header] += line.strip().upper()
     return sequences
-
 
 def is_degenerated(to_check):
     if any(x not in ["A","T","G","C"] for x in to_check):
@@ -52,7 +49,7 @@ def degenerated_of(deg):
                                            
     # replace them with possible nucleotides as regex notation
     for flse in non_nucleotides:
-        transform = transform.replace(flse,"[{}]".format(dg[flse]))
+        transform = transform.replace(flse,f'[{dg[flse]}]')
     
     return transform
 
@@ -79,8 +76,8 @@ def findall(base, pattern):
             if matches:
                 # merge id and seq of query in 'hits' variable
                 # for later use in 'illustrate' function
-                hits = "{}_{}".format(id_query,seq_query)
-
+                hits = f'{id_query}_{seq_query}'
+                
                 # populate binding_sites
                 binding_sites[hits] = matches
                 
@@ -91,12 +88,11 @@ def findall(base, pattern):
 
 def illustrate(template, summary):
     for target, binding_sites in summary.items():
-        yield ">{}:{}\n{}".format(target, str(len(template[target])), template[target])
+        yield f'>{target}:{str(len(template[target]))}\n{template[target]}'
         for query, sites in binding_sites.items():
-            id_ = query.split("_")[0]
-            sequence = query.split("_")[1]
+            id_, sequence = query.split("_")
             for site in sites:
-                yield " " * site + sequence + ":" + id_ + ":" + "(" + str(len(sequence)) + ")" + ":" + str(site) + ":" + str(site + len(sequence))
+                yield f'{"":>{int(site)}}{sequence}:{id_}:({str(len(sequence))}):{str(site)}:{str(int(site)+len(sequence))}'
 
 def now():
     return str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
@@ -107,11 +103,10 @@ def save_mapping(templ, align, filepath):
 
 def save_report(template, align, filepath):
     with open(filepath, "a") as fle:
-        fle.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format("target", "target_length", "query","query_seq", "query_length", "start", "stop"))
+        fle.write(f'target\ttarget_length\tquery\tquery_seq\tquery_length\tstart\tstop\n')
         for k, v in align.items():
             for a, b in v.items():
-                id_ = a.split("_")[0]
-                sequence = a.split("_")[1]
+                id_, sequence = a.split("_")
                 for item in b:
                     fle.write("\t".join(map(str, [k, len(template[k]), id_, sequence, len(sequence), int(item), int(item) + len(sequence)])) + "\n")
 
@@ -125,7 +120,7 @@ def main():
     args = parser.parse_args()
 
     # check if all necessary filepaths are provided
-    # check targets and query
+    # check targets and queries
     if args.targets:
         if args.query:
             pass
@@ -168,25 +163,25 @@ def main():
     out_report = os.path.join(out_dir, "summary.txt").replace("\\", "/")
 
     # import fasta files
-    print("{}\t{}".format(now(), "Import target and query file"))
+    print(f'{now()}\tImport target and query file')
     target = import_sequences(args.targets)
     query = import_sequences(args.query)
-    print("-" * 30)
-    print("{} target sequences".format(len(target)))
-    print("{} query sequences".format(len(query)))
-    print("-" * 30)
+    print(f'{"-" * 30}')
+    print(f'{len(target)} target sequences')
+    print(f'{len(query)} query sequences')
+    print(f'{"-" * 30}')
 
     # do matching
-    print("{}\tSearch for motifs".format(now()))
+    print(f'{now()}\tSearch for motifs')
     matches = findall(target, query)
     
     # save output
-    print("{}\tSave output in project folder".format(now()))
+    print(f'{now()}\tSave output in project folder')
     save_mapping(target, matches, out_mapping)
     save_report(target, matches, out_report)
 
-    print("{}\tRun finished".format(now()))
-    print("{} {}".format("Results successfully stored in :", out_dir))
+    print(f'{now()}\tRun finished')
+    print(f'Results successfully stored in: {out_dir}')
 
 if __name__ == "__main__":
     main()

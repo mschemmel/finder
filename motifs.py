@@ -7,6 +7,7 @@ import re
 from tqdm import tqdm
 
 def import_sequences(filepath):
+	assert len(filepath) > 0
     sequences = {}
     header = ""
 
@@ -98,10 +99,12 @@ def now():
     return str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
 
 def save_mapping(templ, align, filepath):
+	assert len(filepath) > 0
     with open(filepath, "a") as fle:
         fle.write("\n".join(illustrate(templ, align)))
 
 def save_report(template, align, filepath):
+	assert len(filepath) > 0
     with open(filepath, "a") as fle:
         fle.write(f'target\ttarget_length\tquery\tquery_seq\tquery_length\tstart\tstop\n')
         for k, v in align.items():

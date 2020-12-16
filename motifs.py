@@ -38,20 +38,20 @@ def degenerated_of(deg):
 	
 	# https://www.bioinformatics.org/sms/iupac.html
 	dg = {"R": "AG",
-		  "Y": "CT",
-		  "S": "GC",
-		  "W": "AT",
-		  "K": "GT",
-		  "M": "AC",
-		  "B": "CGT",
-		  "D": "AGT",
-		  "H": "ACT",
-		  "V": "ACG",
-		  "N": "ATGC"}
+			"Y": "CT",
+			"S": "GC",
+			"W": "AT",
+			"K": "GT",
+			"M": "AC",
+			"B": "CGT",
+			"D": "AGT",
+			"H": "ACT",
+			"V": "ACG",
+			"N": "ATGC"}
 	
 	# detect all non nucleotides in sequence
-	non_nucleotides = list(filter(lambda a :  True if a in list(dg.keys()) else False, transform))
-										   
+	non_nucleotides = list(filter(lambda a :	True if a in list(dg.keys()) else False, transform))
+											 
 	# replace them with possible nucleotides as regex notation
 	for flse in non_nucleotides:
 		transform = transform.replace(flse,f'[{dg[flse]}]')
@@ -77,7 +77,7 @@ def findall(base, pattern):
 				matches = [i.start() for i in re.finditer(seq_query_deg, seq_target)]
 			else:
 				matches = [i.start() for i in re.finditer(seq_query, seq_target)]
-			  
+				
 			if matches:
 				# merge id and seq of query in 'hits' variable
 				# for later use in 'illustrate' function

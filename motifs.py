@@ -6,22 +6,26 @@ import datetime
 import re
 from tqdm import tqdm
 
-def import_sequences(filepath):
-	assert len(filepath) > 0
-	sequences = {}
-	header = ""
+class Sequences:
+	def __init__(self, filepath):
+		self.filepath = filepath
 
-	# open sequence file and populate dictionary
-	with open(filepath, "r") as fle:
-		for line in fle:
-			if not line.strip():
-				continue
-			if line.startswith(">"):
-				header = line.replace(">", "").strip()
-				sequences[header] = ""
-			else:
-				sequences[header] += line.strip().upper()
-	return sequences
+	def import_sequences(self):
+		assert len(self.filepath) > 0
+		sequences = {}
+		header = ""
+
+		# open sequence file and populate dictionary
+		with open(self.filepath, "r") as fle:
+			for line in fle:
+				if not line.strip():
+					continue
+				if line.startswith(">"):
+					header = line.replace(">", "").strip()
+					sequences[header] = ""
+				else:
+					sequences[header] += line.strip().upper()
+		return sequences
 
 def is_degenerated(to_check):
 	if any(x not in ["A","T","G","C"] for x in to_check):
@@ -119,7 +123,6 @@ def main():
 	parser.add_argument("-t", "--targets", help="Path to your target fasta file")
 	parser.add_argument("-q", "--query", help="Path to your query fasta file")
 	parser.add_argument("-o", "--output", help="Path to your output directory")
-	parser.add_argument("-p", "--project", help="Project ID")
 	args = parser.parse_args()
 
 	# check if all necessary filepaths are provided
@@ -135,32 +138,12 @@ def main():
 		sys.exit(0)
 
 	# check output
+	# increment if already present
+	out_version = 1
 	if args.output:
 		out_dir = args.output
 	else:
 		out_dir = os.getcwd()
-
-	# check project
-	if args.project:
-		out_dir = os.path.join(out_dir, args.project)
-		if os.path.isdir(out_dir):
-			answer = input("WARNING: Project folder already exists. Overwrite [y/n]?").strip()
-			if answer == "y":
-				for ff in os.listdir(out_dir):
-					os.remove(os.path.join(out_dir, ff))
-			elif answer == "n":
-				print("WARNING: Run cancelled")
-				sys.exit(0)
-			else:
-				print("WARNING: Please use 'y' or 'n' to answer.")
-				sys.exit(0)
-		else:
-			os.mkdir(out_dir)
-	else:
-		# if no project name was specified as parameter (-p)
-		out_dir = os.path.join(out_dir, "motifs")
-		os.mkdir(out_dir)
-
 
 	# set output paths
 	out_mapping = os.path.join(out_dir, "mapping.txt").replace("\\", "/")
@@ -168,8 +151,8 @@ def main():
 
 	# import fasta files
 	print(f'{now()}\tImport target and query file')
-	target = import_sequences(args.targets)
-	query = import_sequences(args.query)
+	target = Sequences(args.targets).import_sequences()
+	query = Sequences(args.query).import_sequences()
 	print(f'{"-" * 30}')
 	print(f'{len(target)} target sequences')
 	print(f'{len(query)} query sequences')

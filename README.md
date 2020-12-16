@@ -21,14 +21,13 @@ pip3 install tqdm
 
 ## Usage
 ```
-python3 motifs.py -t template.fa -q query.fa -o /your/output/path -p myproject
+python3 motifs.py -t template.fa -q query.fa -o /your/output/path 
 ```
 ### Arguments:
 
     -t path to template file
     -q path to query file
     -o path to output folder
-    -p name of your project
 
 If the output path (-o) is not specified, the current working directory is used. All other arguments are required.
 ## Test

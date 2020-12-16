@@ -13,7 +13,7 @@ addons:
 before_install:
   - pip3 install -r requirements.txt
 script:
-  - python3 motifs.py -t ./data/template100.fa -q ./data/query10.fa -p testrun
-  - python3 motifs.py -t ./data/degenerated100.fa -q ./data/query10.fa -p testrun
+  - python3 motifs.py -t ./data/template100.fa -q ./data/query10.fa
+  - python3 motifs.py -t ./data/degenerated100.fa -q ./data/query10.fa
 notifications:
   email: false

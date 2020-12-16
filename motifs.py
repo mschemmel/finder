@@ -138,8 +138,6 @@ def main():
 		sys.exit(0)
 
 	# check output
-	# increment if already present
-	out_version = 1
 	if args.output:
 		out_dir = args.output
 	else:

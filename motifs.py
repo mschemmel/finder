@@ -157,8 +157,9 @@ def main():
 		else:
 			os.mkdir(out_dir)
 	else:
-		print("WARNING: You need to specify a project name (-p)")
-		sys.exit(0)
+		# if no project name was specified as parameter (-p)
+		out_dir = os.path.join(out_dir, "motifs")
+		os.mkdir(out_dir)
 
 
 	# set output paths

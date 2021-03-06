@@ -12,6 +12,7 @@ class Colors:
 	ERROR = "\033[91m"
 	NC = "\033[0m"
 
+
 class Sequences:
 	def __init__(self, filepath):
 		self.filepath = filepath
@@ -59,7 +60,7 @@ def degenerated_of(deg):
 	non_nucleotides = list(filter(lambda a :	True if a in list(dg.keys()) else False, transform))
 	
 	# replace them with possible nucleotides as regex notation
-	transform = ''.join([flse for non_nucleotides in transform.replace(flse,f'[{dg[flse]}]')])
+	transform = ''.join([transform.replace(flse,f'[{dg[flse]}]') for flse in non_nucleotides])
 
 	return transform
 

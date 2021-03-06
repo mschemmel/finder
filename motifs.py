@@ -124,10 +124,10 @@ def save_report(template, align, filepath):
 
 def main():
 	# handle command line options
-	parser = argparse.ArgumentParser(description="Program to find all occurences of queries in template sequences.")
-	parser.add_argument("-t", "--targets", help="Path to your target fasta file")
-	parser.add_argument("-q", "--query", help="Path to your query fasta file")
-	parser.add_argument("-o", "--output", help="Path to your output directory")
+	parser = argparse.ArgumentParser(description = "Program to find all occurences of queries in template sequences.")
+	parser.add_argument("-t", "--target", help = "Path to your target fasta file")
+	parser.add_argument("-q", "--query", help = "Path to your query fasta file")
+	parser.add_argument("-o", "--output", help = "Path to your output directory")
 	args = parser.parse_args()
 
 	# check if all necessary filepaths are provided

@@ -6,7 +6,7 @@ import datetime
 import re
 from tqdm import tqdm
 
-class colors:
+class Colors:
 	OK = "\033[92m"
 	WARNING = "\033[93m"
 	ERROR = "\033[91m"
@@ -69,12 +69,11 @@ def findall(base, pattern):
 	# loop through all targets
 	for id_target, seq_target in tqdm(base.items()):
 		binding_sites = {}
-
+		
+		# loop through all queries
 		for id_query, seq_query in pattern.items():
-
 			# check if query sequence is longer than target
-			if len(seq_query) > len(seq_target):
-				continue
+			assert len(seq_query) < len(seq_target), "Query sequence is longer than target sequence"
 			
 			# check if query sequence is degenerated
 			if is_degenerated(seq_query):
@@ -132,14 +131,14 @@ def main():
 
 	# check if all necessary filepaths are provided
 	# check targets and queries
-	if args.targets:
+	if args.target:
 		if args.query:
 			pass
 		else:
-			print(f"[ {colors.ERROR}ERROR{colors.NC} ] Please provide a valid path for your query file.")
+			print(f"[ {Colors.ERROR}ERROR{Colors.NC} ] Please provide a valid path for your query file.")
 			sys.exit(0)
 	else:
-		print(f"[ {colors.ERROR}ERROR{colors.NC} ] Please provide a valid path for your target file.")
+		print(f"[ {Colors.ERROR}ERROR{Colors.NC} ] Please provide a valid path for your target file.")
 		sys.exit(0)
 
 	# check output
@@ -154,7 +153,7 @@ def main():
 
 	# import fasta files
 	print(f'{now()}\tImport target and query file')
-	target = Sequences(args.targets).import_sequences()
+	target = Sequences(args.target).import_sequences()
 	query = Sequences(args.query).import_sequences()
 	print(f'{"-" * 30}')
 	print(f'{len(target)} target sequences')
@@ -171,7 +170,7 @@ def main():
 	save_report(target, matches, out_report)
 
 	print(f'{now()}\tRun finished')
-	print(f'[ {colors.OK}OK {colors.NC} ] Results successfully stored in: {out_dir}')
+	print(f'[ {Colors.OK}OK {Colors.NC} ] Results successfully stored in: {out_dir}')
 
 if __name__ == "__main__":
 	main()

@@ -6,6 +6,12 @@ import datetime
 import re
 from tqdm import tqdm
 
+class colors:
+	OK = "\033[92m"
+	WARNING = "\033[93m"
+	ERROR = "\033[91m"
+	NC = "\033[0m"
+
 class Sequences:
 	def __init__(self, filepath):
 		self.filepath = filepath
@@ -52,11 +58,9 @@ def degenerated_of(deg):
 	# detect all non nucleotides in sequence
 	non_nucleotides = list(filter(lambda a :	True if a in list(dg.keys()) else False, transform))
 	
-	transform = "".join([flse for non_nucleotides in transform.replace(flse,f'[{dg[flse]}]')])
 	# replace them with possible nucleotides as regex notation
-	#for flse in non_nucleotides:
-	#	transform = transform.replace(flse,f'[{dg[flse]}]')
-	
+	transform = ''.join([flse for non_nucleotides in transform.replace(flse,f'[{dg[flse]}]')])
+
 	return transform
 
 def findall(base, pattern):
@@ -132,10 +136,10 @@ def main():
 		if args.query:
 			pass
 		else:
-			print("Please provide a valid path for your query file.")
+			print(f"[ {colors.ERROR}ERROR{colors.NC} ] Please provide a valid path for your query file.")
 			sys.exit(0)
 	else:
-		print("Please provide a valid path for your target file.")
+		print(f"[ {colors.ERROR}ERROR{colors.NC} ] Please provide a valid path for your target file.")
 		sys.exit(0)
 
 	# check output
@@ -167,7 +171,7 @@ def main():
 	save_report(target, matches, out_report)
 
 	print(f'{now()}\tRun finished')
-	print(f'Results successfully stored in: {out_dir}')
+	print(f'[ {colors.OK}OK {colors.NC} ] Results successfully stored in: {out_dir}')
 
 if __name__ == "__main__":
 	main()

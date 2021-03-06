@@ -35,7 +35,7 @@ If the output path (-o) is not specified, the current working directory is used.
 The 'data' folder contains several files with arbitrarily generated nucleotide sequences (non-degenerated & degenerated) for testing purposes. Try them out using:
 
 ```
-python3 motifs.py -t ./data/template1000.fa -q ./data/query100.fa -p testrun
+python3 motifs.py -t ./data/template1000.fa -q ./data/query100.fa 
 ```
 ## Output
 The output is structured into two files:

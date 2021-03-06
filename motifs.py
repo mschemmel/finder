@@ -51,10 +51,11 @@ def degenerated_of(deg):
 	
 	# detect all non nucleotides in sequence
 	non_nucleotides = list(filter(lambda a :	True if a in list(dg.keys()) else False, transform))
-											 
+	
+	transform = "".join([flse for non_nucleotides in transform.replace(flse,f'[{dg[flse]}]')])
 	# replace them with possible nucleotides as regex notation
-	for flse in non_nucleotides:
-		transform = transform.replace(flse,f'[{dg[flse]}]')
+	#for flse in non_nucleotides:
+	#	transform = transform.replace(flse,f'[{dg[flse]}]')
 	
 	return transform
 

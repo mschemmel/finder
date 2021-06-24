@@ -41,9 +41,13 @@ def search(text: dict, pattern: dict, threshold: int) -> dict:
 		# loop through all queries
 		for id_query, seq_query in pattern.items():
 			assert len(seq_query) < len(seq_target), "Query longer than target"
+			desc = f"{id_query}_{seq_query}_for"
 			occ = find_occurences(seq_target, seq_query, threshold) 
+			if not occ:
+				desc = f"{id_query}_{seq_query}_rev"
+				occ = find_occurences(seq_target, reverse_complement(seq_query), threshold) 
 			if occ:
-				per_target[f"{id_query}_{seq_query}"] = occ
+				per_target[desc] = occ
 		if bool(per_target):
 			hits[id_target] = per_target
 	return hits
@@ -52,9 +56,9 @@ def illustrate(template: dict , summary: dict):
 	for target, binding_sites in summary.items():
 		yield f'>{target}:{str(len(template[target]))}\n{template[target]}'
 		for query, sites in binding_sites.items():
-			id_, sequence = query.split("_")
+			id_, sequence, direction = query.split("_")
 			for site in sites:
-				yield f'{"":>{int(site)}}{sequence}:{id_}:({str(len(sequence))}):{str(site)}:{str(int(site)+len(sequence))}'
+				yield f'{"":>{int(site)}}{sequence}:{id_}:({direction}):({str(len(sequence))}):{str(site)}:{str(int(site)+len(sequence))}'
 
 
 def reverse_complement(dna: str) -> str:

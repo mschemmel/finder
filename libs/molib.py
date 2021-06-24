@@ -1,7 +1,6 @@
 import datetime
 import os
 from tqdm import tqdm
-from collections import defaultdict
 
 def sequences(filepath: str) -> dict:
 	assert len(filepath) > 0

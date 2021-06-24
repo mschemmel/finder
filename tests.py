@@ -9,7 +9,7 @@ class Test_motif(unittest.TestCase):
 		# test perfect match
 		self.assertEqual(libs.molib.find_occurences("ATGCTAGTCGTAG","TAG",0),[4,10],"Should be 4 and 10")
 		# test mismatch
-		self.assertEqual(libs.molib.find_occurences("ATGCTAGTCGTAG","TAG",1),[4,7,10],"Should be 4,7 and 10")
+		self.assertEqual(libs.molib.find_occurences("ATGCTAGTCGTAG","TAG",1),[4,7,10],"Should be 4, 7 and 10")
 
 	def test_import_sequences(self):
 		"""import_sequences"""

@@ -29,6 +29,7 @@ python3 motifs.py -t template.fa -q query.fa -o /your/output/path
 | `-t` (`--target`) | path to template file |
 | `-q` (`--query`) | path to query file |
 | `-o` (`--output`) | path to output folder |
+| `-m` (`--mismatch`) | number of mismatches allowed |
 
 If the output path (-o) is not specified, the current working directory is used. All other arguments are required.
 ## Test
@@ -39,12 +40,11 @@ The 'data' folder contains several files with arbitrarily generated nucleotide s
 python3 motifs.py -t ./data/template1000.fa -q ./data/query100.fa 
 ```
 ## Output
-The output is structured into two files:
+The output is structured into a mapping file:
 
 | File | Description |
 | ---- | ----------- |
 | mapping.txt | contains a simple text based visualization of template sequences with at least one hit |
-| summary.txt | contains a tabular conclusion of all template sequences with at least on hit and their location |
 
 ## Feedback
 If you have any feedback or comments, please send me a mail or open an issue on github.

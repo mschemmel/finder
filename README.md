@@ -24,12 +24,12 @@ pip3 install tqdm
 python3 motifs.py -t template.fa -q query.fa -o /your/output/path 
 ```
 ### Arguments:
-| Parameter | Description |
-| --------- | ----------- |
-| `-t` (`--target`) | path to template file |
-| `-q` (`--query`) | path to query file |
-| `-o` (`--output`) | path to output folder |
-| `-m` (`--mismatch`) | number of mismatches allowed |
+| Parameter | Description | Default |
+| --------- | ----------- | --------|
+| `-t` (`--target`) | path to template file ||
+| `-q` (`--query`) | path to query file ||
+| `-o` (`--output`) | path to output folder ||
+| `-m` (`--mismatch`) | number of mismatches allowed | 0 |
 
 If the output path (-o) is not specified, the current working directory is used. All other arguments are required.
 ## Test

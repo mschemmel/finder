@@ -4,7 +4,7 @@
 
 # motifs
 
-A python script to locate motifs in nucleotide sequences. The underlying idea was to identify binding sites that comprise only a few nucleotides in target sequences, such as those required for miRNA or primer binding sites. Of course, it can also be used as a general tool to identify partial regions in nucleotide sequences. It is not intended to work with huge datasets, but rather as a downstream tool for detailed analysis after general mapping tools as for example bowtie.  
+A python script to locate motifs in nucleotide sequences using a naive matching approach. The underlying idea was to identify binding sites that comprise only a few nucleotides in target sequences, such as those required for miRNA or primer binding sites. Of course, it can also be used as a general tool to identify partial regions in nucleotide sequences. It is not intended to work with large datasets, but rather as a downstream tool for detailed analysis after general mapping tools as for example bowtie.  
 
 <p align="center">
 <img src="/images/illustrate_mapping.png">

@@ -34,7 +34,7 @@ def find_occurences(text: str, pattern: str, threshold: int) -> list:
 			occurences.append(i)
 	return occurences
 
-def search(text: dict, pattern: dict, threshold: int):
+def search(text: dict, pattern: dict, threshold: int) -> dict:
 	hits = {}
 	# loop through all targets
 	for id_target, seq_target in tqdm(text.items()):
@@ -49,7 +49,7 @@ def search(text: dict, pattern: dict, threshold: int):
 			hits[id_target] = per_target
 	return hits
 
-def illustrate(template, summary):
+def illustrate(template: dict , summary: dict):
 	for target, binding_sites in summary.items():
 		yield f'>{target}:{str(len(template[target]))}\n{template[target]}'
 		for query, sites in binding_sites.items():
@@ -58,17 +58,17 @@ def illustrate(template, summary):
 				yield f'{"":>{int(site)}}{sequence}:{id_}:({str(len(sequence))}):{str(site)}:{str(int(site)+len(sequence))}'
 
 
-def reverse_complement(dna:str) -> str:
+def reverse_complement(dna: str) -> str:
 	nuc = {"T":"A","A":"T","G":"C","C":"G"}
 	return "".join([nuc[x] for x in dna])[::-1]
 
-def now():
+def now() -> str:
 	return str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
 
-def save_mapping(templ, align, filepath):
+def save_mapping(template: dict, alignment: dict, filepath: str):
 	assert len(filepath) > 0
 	if os.path.isfile(filepath):
 		os.remove(filepath)
 	with open(filepath, "a") as fle:
-		fle.write("\n".join(illustrate(templ, align)))
+		fle.write("\n".join(illustrate(template, alignment)))
 

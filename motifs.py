@@ -2,8 +2,8 @@
 import os
 import sys
 import argparse
-import moformat as mf
-import molib as ml
+import libs.moformat as mf
+import libs.molib as ml
 
 def main():
 	# handle command line options

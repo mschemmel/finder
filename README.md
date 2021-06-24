@@ -31,7 +31,7 @@ python3 motifs.py -t template.fa -q query.fa -o /your/output/path
 | `-o` (`--output`) | path to output folder ||
 | `-m` (`--mismatch`) | number of mismatches allowed | 0 |
 
-If the output path (-o) is not specified, the current working directory is used. All other arguments are required.
+If the output path (-o) is not specified, the current working directory is used.
 ## Test
 
 The 'data' folder contains several files with arbitrarily generated nucleotide sequences (non-degenerated & degenerated) for testing purposes. Try them out using:

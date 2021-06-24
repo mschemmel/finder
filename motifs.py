@@ -52,9 +52,6 @@ def main():
 	print(f'{ml.now()}\tSearch for motifs')
 	matches = ml.search(target, query, mismatch)
 	
-	for k,v in matches.items():
-		print(f"{k}:{v}")
-
 	# save output
 	print(f'{ml.now()}\tSave output in project folder')
 	ml.save_mapping(target, matches, out_mapping)

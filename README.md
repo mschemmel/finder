@@ -34,10 +34,10 @@ python3 motifs.py -t template.fa -q query.fa -o /your/output/path
 If the output path (-o) is not specified, the current working directory is used.
 ## Test
 
-The 'data' folder contains several files with arbitrarily generated nucleotide sequences (non-degenerated & degenerated) for testing purposes. Try them out using:
+The 'data' folder contains files with arbitrarily generated nucleotide sequences for testing purposes. Try them out using:
 
 ```
-python3 motifs.py -t ./data/template1000.fa -q ./data/query100.fa 
+python3 motifs.py -t ./data/template.fa -q ./data/query.fa --mismatch 2
 ```
 ## Output
 The output is structured into a mapping file:

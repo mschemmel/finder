@@ -12,7 +12,7 @@ def main():
 	parser.add_argument("-q", "--query", help = "Path to your query fasta file")
 	parser.add_argument("-m", "--mismatch", default = 0, help = "Number of mismatches allowed")
 	parser.add_argument("-o", "--output", help = "Path to your output directory")
-	parser.add_argument("--save", default = False, help = "Save output to file?")
+	parser.add_argument("-s", "--save", action='store_true', help = "Save output to file?")
 	args = parser.parse_args()
 
 	# check if all necessary filepaths are provided
@@ -45,7 +45,7 @@ def main():
 
 	# run 
 	print(f'{mf.now()}\tSearch for motifs')
-	print(f'{"-" * 50}')
+	print(f'{"-" * 50}\n')
 	matches = ml.Seek(args.target, args.query).search(args.mismatch)
 	if report:
 		if os.path.isfile(out_report):
@@ -53,16 +53,15 @@ def main():
 		with open(out_report, "a") as out:
 			for match in matches:
 				out.write(f"{match}\n")
+		# save output
+		# TODO: save mapping in html report
+		print(f'{mf.now()}\tSave output in project folder')
 	else:
 		for match in matches:
 			print(match)
 	
 	
-	# save output
-	# TODO: save mapping in html report
-	print(f'{mf.now()}\tSave output in project folder')
-	#ml.save_mapping(target, matches, out_mapping)
-
+	print(f'\n{"-" * 50}')
 	print(f'{mf.now()}\tRun finished')
 	print(f'[ {mf.Colors.OK}OK {mf.Colors.NC} ] Results successfully stored in: {out_dir}')
 

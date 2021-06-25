@@ -12,8 +12,7 @@ class Seek():
     for i in range(len(text) - len(pattern) + 1):
       match = True
       mismatch = 0
-      match_seq = []
-      mismatch_record = []
+      match_seq, mismatch_record = [],[]
       for j in range(len(pattern)):
         if text[j+i] != pattern[j]:
           mismatch += 1

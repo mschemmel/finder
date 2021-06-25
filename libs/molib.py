@@ -33,15 +33,15 @@ class Seek():
       per_target = {}
       for id_query, seq_query in pyfastx.Fasta(self.query_path, build_index = False):
         assert len(seq_query) < len(seq_target), "Query longer than target"
-        desc = f"{id_query}_{seq_query}_for"
+        direction = 0 # Forward 5'-3'
         occ = self.find_occurences(seq_target, seq_query, threshold) 
         if not occ:
-          desc = f"{id_query}_{seq_query}_rev"
+          direction = 1 # Reverse 3'-5'
           occ = self.find_occurences(seq_target, self.reverse_complement(seq_query), threshold) 
         if occ:
           lp = len(seq_query)
           for h in occ:
-            yield f"{id_target}\t{h[0]}\t{h[0]+lp}\t{lp}\t{h[2]}\t{id_query}\t{seq_query}\t{h[1]}\t{h[3]}"
+            yield f"{id_target}\t{h[0]}\t{h[0]+lp}\t{lp}\t{h[2]}\t{direction}\t{id_query}\t{seq_query}\t{h[1]}\t{h[3]}"
 
   def illustrate(self, template: dict , summary: dict):
     for target, binding_sites in summary.items():

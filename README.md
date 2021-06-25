@@ -10,8 +10,6 @@ A python script to locate motifs in nucleotide sequences using a naive matching 
 <img src="/images/illustrate_mapping.png">
 </p>
 
-## Getting Started
-
 ## Usage
 ```
 python3 motifs.py -t template.fa -q query.fa -o /your/output/path 

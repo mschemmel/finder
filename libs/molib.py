@@ -43,24 +43,8 @@ class Seek():
           for h in occ:
             yield f"{id_target}\t{h[0]}\t{h[0]+lp}\t{lp}\t{h[2]}\t{direction}\t{id_query}\t{seq_query}\t{h[1]}\t{h[3]}"
 
-  def illustrate(self, template: dict , summary: dict):
-    for target, binding_sites in summary.items():
-      yield f'>{target}:{str(len(template[target]))}\n{template[target]}'
-      for query, sites in binding_sites.items():
-        id_, sequence, direction = query.split("_")
-        for site in sites:
-          yield f'{"":>{int(site)}}{sequence}:{id_}:({direction}):({str(len(sequence))}):{str(site)}:{str(int(site)+len(sequence))}'
-
-
   def reverse_complement(self, dna: str) -> str:
     nuc = {"T":"A","A":"T","G":"C","C":"G"}
     return "".join([nuc[x] for x in dna])[::-1]
 
-
-  def save_mapping(self, template: dict, alignment: dict, filepath: str):
-    assert len(filepath) > 0
-    if os.path.isfile(filepath):
-      os.remove(filepath)
-    with open(filepath, "a") as fle:
-      fle.write("\n".join(illustrate(template, alignment)))
 

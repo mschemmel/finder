@@ -30,6 +30,7 @@ python3 motifs.py -t template.fa -q query.fa -o /your/output/path
 | `-q` (`--query`) | path to query file ||
 | `-o` (`--output`) | path to output folder ||
 | `-m` (`--mismatch`) | number of mismatches allowed | 0 |
+| `-s` (`--save`) | Save output to file | False |
 
 If the output path (-o) is not specified, the current working directory is used.
 ## Test

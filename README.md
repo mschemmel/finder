@@ -11,13 +11,6 @@ A python script to locate motifs in nucleotide sequences using a naive matching 
 </p>
 
 ## Getting Started
-It is written in python3.
-
-## Prerequisites
-It uses the package ['tqdm'](https://github.com/tqdm/tqdm) to track progress. If it is not already installed, you can easily do this with:
-```
-pip3 install tqdm 
-```
 
 ## Usage
 ```

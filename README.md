@@ -10,15 +10,6 @@ A python script to locate motifs in nucleotide sequences using a naive matching 
 <img src="/images/illustrate_mapping.png">
 </p>
 
-## Getting Started
-It is written in python3.
-
-## Prerequisites
-It uses the package ['tqdm'](https://github.com/tqdm/tqdm) to track progress. If it is not already installed, you can easily do this with:
-```
-pip3 install tqdm 
-```
-
 ## Usage
 ```
 python3 motifs.py -t template.fa -q query.fa -o /your/output/path 

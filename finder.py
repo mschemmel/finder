@@ -2,8 +2,8 @@
 import os
 import sys
 import argparse
-import libs.moformat as mf
-import libs.molib as ml
+import libs.fformat as ff
+import libs.flib as fl
 
 def main():
 	# handle command line options
@@ -21,10 +21,10 @@ def main():
 		if args.query:
 			pass		
 		else:
-			print(f"[ {mf.Colors.ERROR}ERROR{mf.Colors.NC} ] Please provide a valid path for your query file.")
+			print(f"[ {ff.Colors.ERROR}ERROR{mf.Colors.NC} ] Please provide a valid path for your query file.")
 			sys.exit(0)
 	else:
-		print(f"[ {mf.Colors.ERROR}ERROR{mf.Colors.NC} ] Please provide a valid path for your target file.")
+		print(f"[ {ff.Colors.ERROR}ERROR{mf.Colors.NC} ] Please provide a valid path for your target file.")
 		sys.exit(0)
 
 	# check output
@@ -44,9 +44,9 @@ def main():
 	report = args.save
 
 	# run 
-	print(f'{mf.now()}\tSearch for motifs')
+	print(f'{ff.now()}\tSearch for motifs')
 	print(f'{"-" * 50}\n')
-	matches = ml.Seek(args.target, args.query).search(args.mismatch)
+	matches = fl.Seek(args.target, args.query).search(args.mismatch)
 	if report:
 		if os.path.isfile(out_report):
 			os.remove(out_report)
@@ -55,15 +55,15 @@ def main():
 				out.write(f"{match}\n")
 		# save output
 		# TODO: save mapping in html report
-		print(f'{mf.now()}\tSave output in project folder')
+		print(f'{ff.now()}\tSave output in project folder')
 	else:
 		for match in matches:
 			print(match)
 	
 	
 	print(f'\n{"-" * 50}')
-	print(f'{mf.now()}\tRun finished')
-	print(f'[ {mf.Colors.OK}OK {mf.Colors.NC} ] Results successfully stored in: {out_dir}')
+	print(f'{ff.now()}\tRun finished')
+	print(f'[ {ff.Colors.OK}OK {ff.Colors.NC} ] Results successfully stored in: {out_dir}')
 
 if __name__ == "__main__":
 	main()

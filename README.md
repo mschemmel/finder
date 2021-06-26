@@ -2,9 +2,9 @@
 <img src="https://img.shields.io/badge/python-3.6--3.9-9cf.svg?style=flat">
 [![Build Status](https://travis-ci.org/mschemmel/motifs.svg?branch=master)](https://travis-ci.org/mschemmel/motifs)
 
-# motifs
+# finder
 
-A python script to locate motifs in nucleotide sequences using a naive matching approach. The underlying idea was to identify binding sites that comprise only a few nucleotides in target sequences, such as those required for miRNA or primer binding sites. Of course, it can also be used as a general tool to identify partial regions in nucleotide sequences. It is not intended to work with large datasets, but rather as a downstream tool for detailed analysis after general mapping tools as for example bowtie.  
+A python script to locate read alignments in nucleotide sequences using a naive matching approach. I know, slow, but the project startet initially to learn more about the read alignment problem. The underlying idea was to identify binding sites that comprise only a few nucleotides in target sequences, such as those required for miRNA or primer binding sites. Of course, it can also be used as a general tool to identify partial regions in nucleotide sequences. Because of its lacking performance, it is not intended to work with large datasets, but rather as a downstream tool for detailed analysis.
 
 <p align="center">
 <img src="/images/illustrate_mapping.png">

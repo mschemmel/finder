@@ -12,7 +12,7 @@ A python script to locate read alignments in nucleotide sequences using a naive 
 
 ## Usage
 ```
-python3 motifs.py -t template.fa -q query.fa -o /your/output/path 
+python3 finder.py -t template.fa -q query.fa -o /your/output/path 
 ```
 ### Arguments:
 | Parameter | Description | Default |
@@ -29,10 +29,10 @@ If the output path (-o) is not specified, the current working directory is used.
 The 'data' folder contains files with arbitrarily generated nucleotide sequences for testing purposes. Try them out using:
 
 ```
-python3 motifs.py -t ./data/template.fa -q ./data/query.fa --mismatch 2
+python3 finder.py -t ./data/template.fa -q ./data/query.fa --mismatch 2
 ```
 ## Output
-The output is structured into a mapping file:
+The output is structured into a mapping file (__in progress__):
 
 | File | Description |
 | ---- | ----------- |

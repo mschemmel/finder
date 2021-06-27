@@ -3,6 +3,7 @@ import os
 import pyfastx
 
 def find_occurences(text: str, pattern: str, threshold: int) -> list: 
+	assert int(threshold) < len(pattern)
 	occurences = []
 	for i in range(len(text) - len(pattern) + 1):
 		match = True

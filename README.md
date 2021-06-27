@@ -21,6 +21,7 @@ python3 finder.py -t template.fa -q query.fa -o /your/output/path
 | `-o` (`--output`) | path to output folder ||
 | `-m` (`--mismatch`) | number of mismatches allowed | 0 |
 | `-s` (`--save`) | Save output to file | False |
+| `-r` (`--rev`) | Search also in reverse complement of target sequence | False |
 
 If the output path (-o) is not specified, the current working directory is used.
 ## Test

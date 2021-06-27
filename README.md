@@ -1,5 +1,5 @@
 ![GitHub](https://img.shields.io/github/license/mschemmel/motifs)
-<img src="https://img.shields.io/badge/python-3.6--3.9-9cf.svg?style=flat">
+<img src="https://img.shields.io/badge/python-3.9-9cf.svg?style=flat">
 ![example workflow](https://github.com/mschemmel/finder/actions/workflows/python-app.yml/badge.svg)
 # finder
 

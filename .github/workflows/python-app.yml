@@ -29,4 +29,6 @@ jobs:
     - name: Test with pytest
       run: pytest
     - name: Test whole script
-      run: python3 finder.py -t ./data/template.fa -q ./data/query.fa --mismatch 1
+      run: |
+        python3 finder.py -t ./data/template.fa -q ./data/query.fa --mismatch 1
+        python3 finder.py -t ./data/template.fa -q ./data/query.fa --mismatch 1 --rev

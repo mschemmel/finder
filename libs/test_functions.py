@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from libs import flib
+import flib
 
 def test_occurences():
 	"""find_occurences"""

@@ -13,6 +13,7 @@ def main():
 	parser.add_argument("-m", "--mismatch", default = 0, help = "Number of mismatches allowed")
 	parser.add_argument("-o", "--output", help = "Path to your output directory")
 	parser.add_argument("-s", "--save", action='store_true', help = "Save output to file?")
+	parser.add_argument("-r", "--rev", action='store_true', help = "Save output to file?")
 	args = parser.parse_args()
 
 	# check if all necessary filepaths are provided
@@ -40,14 +41,11 @@ def main():
 	# set number of mismatches allowed
 	mismatch = args.mismatch
 	
-	# if save report
-	report = args.save
-
 	# run 
 	print(f'{ff.now()}\tSearch for motifs')
 	print(f'{"-" * 50}\n')
-	matches = fl.Seek(args.target, args.query).search(args.mismatch)
-	if report:
+	matches = fl.Seek(args.target, args.query).search(args.mismatch, args.rev)
+	if args.save:
 		if os.path.isfile(out_report):
 			os.remove(out_report)
 		with open(out_report, "a") as out:

@@ -43,7 +43,7 @@ class Seek():
             yield f"{id_target}\t{h[0]}\t{h[0]+lp}\t{lp}\t{h[2]}\t{direction}\t{id_query}\t{seq_query}\t{h[1]}\t{h[3]}"
 
   def reverse_complement(self, dna: str) -> str:
-    nuc = {"T":"A","A":"T","G":"C","C":"G"}
+    nuc = {"T":"A","A":"T","G":"C","C":"G","N":"N"}
     return "".join([nuc[x] for x in dna])[::-1]
 
 

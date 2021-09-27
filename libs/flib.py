@@ -3,6 +3,7 @@ import os
 import pyfastx
 
 def find_occurences(text: str, pattern: str, threshold: int) -> list: 
+	assert len(pattern) <= len(text)
 	assert int(threshold) < len(pattern)
 	occurences = []
 	for i in range(len(text) - len(pattern) + 1):
@@ -37,7 +38,6 @@ class Seek():
 		for id_target, seq_target, comment_target in pyfastx.Fastx(self.target_path):
 			per_target = {}
 			for id_query, seq_query, comment_query in pyfastx.Fastx(self.query_path):
-				assert len(seq_query) <= len(seq_target), "Query longer than target"
 				name = f"{id_query}_{comment_query}"
 				per_target["f"] = find_occurences(seq_target, seq_query, threshold)
 				if revcomp:					

@@ -23,7 +23,6 @@ def find_occurences(text: str, pattern: str, threshold: int) -> list:
 			occurences.append((i,number_of_mismatches, "".join(pattern_match_seq), " ".join(mismatch_variant_record)))
 	return occurences
 
-
 def reverse_complement(dna: str) -> str:
 	nuc = {"T":"A","A":"T","G":"C","C":"G","N":"N"}
 	return "".join([nuc[x] for x in dna])[::-1]
@@ -38,7 +37,7 @@ class Seek():
 		for id_target, seq_target, comment_target in pyfastx.Fastx(self.target_path):
 			per_target = {}
 			for id_query, seq_query, comment_query in pyfastx.Fastx(self.query_path):
-				assert len(seq_query) < len(seq_target), "Query longer than target"
+				assert len(seq_query) <= len(seq_target), "Query longer than target"
 				name = f"{id_query}_{comment_query}"
 				per_target["f"] = find_occurences(seq_target, seq_query, threshold)
 				if revcomp:					

@@ -6,6 +6,7 @@ def test_occurences():
 	"""find_occurences"""
 	# test perfect match
 	assert flib.find_occurences("ATGCTAGTCG","TAG",0) == [(4,0,"TAG","")]
+	# test match with one mismatch
 	assert flib.find_occurences("ATGCTAGTCG","TAG",1) == [(4,0,"TAG",""),(7,1,"TcG","(8:A -> C)")]
 
 def test_reverse_complement():

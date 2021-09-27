@@ -61,7 +61,7 @@ def main():
 	
 	print(f'\n{"-" * 50}')
 	print(f'{ff.now()}\tRun finished')
-	print(f'[ {ff.Colors.OK}OK {ff.Colors.NC} ] Results successfully stored in: {out_dir}')
+	print(f'[ {ff.Colors.OK}OK{ff.Colors.NC} ] Results successfully stored in: {out_dir}')
 
 if __name__ == "__main__":
 	main()

@@ -17,7 +17,7 @@ def main():
 	parser.add_argument("-r", "--rev", action='store_true', help = "Look in reverse complement strand?")
 	args = parser.parse_args()
 
-	# check if all necessary filepaths are provided
+	# check if necessary filepaths are provided
 	# check targets and queries
 	if args.target:
 		if args.query:

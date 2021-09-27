@@ -7,13 +7,14 @@ import libs.flib as fl
 
 def main():
 	# handle command line options
-	parser = argparse.ArgumentParser(description = "Program to find all occurences of queries in template sequences.")
+	parser = argparse.ArgumentParser(description = "Program to find all occurences of queries in template sequences.",
+																	 usage = "python3 finder.py -t ./data/template.fa -q ./data/query.fa --mismatch 2")
 	parser.add_argument("-t", "--target", help = "Path to your target fasta file")
 	parser.add_argument("-q", "--query", help = "Path to your query fasta file")
 	parser.add_argument("-m", "--mismatch", default = 0, help = "Number of mismatches allowed")
 	parser.add_argument("-o", "--output", help = "Path to your output directory")
 	parser.add_argument("-s", "--save", action='store_true', help = "Save output to file?")
-	parser.add_argument("-r", "--rev", action='store_true', help = "Save output to file?")
+	parser.add_argument("-r", "--rev", action='store_true', help = "Look in reverse complement strand?")
 	args = parser.parse_args()
 
 	# check if all necessary filepaths are provided

@@ -22,7 +22,7 @@ python3 finder.py -t template.fa -q query.fa -o /your/output/path
 | `-s` (`--save`) | Save output to file | False |
 | `-r` (`--rev`) | Search also in reverse complement of target sequence | False |
 
-If the output path (-o) is not specified, the current working directory is used.
+If no output path (-o) is specified, the current working directory is used.
 ## Test
 
 The 'data' folder contains files with arbitrarily generated nucleotide sequences for testing purposes. Try them out using:
